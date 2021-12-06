@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login.dart' ;
+import 'package:calciotto/views/all.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/': (context) => Login(),
+        '/signin': (context) => Signin(),
+      },
     );
   }
 }
