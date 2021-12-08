@@ -44,7 +44,7 @@ class Login extends StatelessWidget {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, '/home'),
         child: Text("Accedi",
             textAlign: TextAlign.center,
             style: style.copyWith(
