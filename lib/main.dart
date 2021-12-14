@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => Login(),
         '/signin': (context) => Signin(),
         '/home' : (context) => Home(),
+        '/profile': (context) => Profile(),
       },
     );
   }

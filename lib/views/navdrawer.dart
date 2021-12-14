@@ -25,7 +25,7 @@ class NavDrawer extends StatelessWidget {
                   color: const Color.fromARGB(255, 62, 65, 102)
                 )
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => Navigator.pushNamed(context, '/home'),
           ),
           const Divider(
             color: Color.fromARGB(255, 62, 65, 102),
@@ -41,7 +41,7 @@ class NavDrawer extends StatelessWidget {
                     color: const Color.fromARGB(255, 62, 65, 102)
                 )
             ),
-            onTap: () => {},
+            onTap: () => Navigator.pushNamed(context, '/profile'),
           ),
           const Divider(
             color: Color.fromARGB(255, 62, 65, 102),
