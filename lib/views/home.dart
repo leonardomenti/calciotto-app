@@ -91,6 +91,7 @@ class Home extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Container(height: 10.0),
                   Expanded(
                     child: Image.asset(
                       "assets/images/pitch.jpg",

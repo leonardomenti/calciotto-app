@@ -3,7 +3,7 @@ import 'navdrawer.dart';
 
 class Profile extends StatelessWidget {
 
-  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 15.0);
   final appBar = AppBar(
     title: const Text(""),
     backgroundColor: const Color.fromARGB(255, 1, 39, 77),
@@ -16,13 +16,13 @@ class Profile extends StatelessWidget {
             splashColor: Colors.blue.withAlpha(40),
             onTap: (){},
             child : SizedBox(
-                width: 150,
+                width: 160,
                 height: 100,
                 child: Center(
                   child: Text(
                       text,
                       style: style.copyWith(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold)),
                 )
             ),
@@ -31,6 +31,46 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final exitButton = Material(
+      elevation: 5.0,
+      color: const Color.fromARGB(255, 224, 224, 224),
+      borderRadius: BorderRadius.circular(10.0),
+      child: MaterialButton(
+        minWidth: MediaQuery.of(context).size.width - 70,
+        padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        onPressed: () {},
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius. circular(10.0),
+            side: BorderSide(color: Colors. red),
+        ),
+        child: Text("Esci",
+            textAlign: TextAlign.center,
+            style: style.copyWith(
+                color: Colors.red, fontWeight: FontWeight.bold)),
+      ),
+    );
+
+    final deleteButton = Material(
+      elevation: 5.0,
+      color: const Color.fromARGB(255, 193, 22, 28),
+      borderRadius: BorderRadius.circular(10.0),
+      child: MaterialButton(
+        minWidth: MediaQuery.of(context).size.width - 70,
+        padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        onPressed: () {},
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius. circular(10.0),
+          side: BorderSide(color: Colors. red),
+        ),
+        child: Text("Elimina Account",
+            textAlign: TextAlign.center,
+            style: style.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold)),
+      ),
+    );
+
+
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -54,56 +94,60 @@ class Profile extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    Container(width: 60.0),
+                    Container(width: 30.0),
                     SizedBox(
                         height: 30.0,
                         child: Text(
                             "Leonardo Menti",
                             style: style.copyWith(
                                 color: Colors.white,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold))
                     ),
                   ]),
               Container(height: 10.0),
-              Card(
-                color: const Color.fromARGB(255, 224, 224, 224),
-                child: Column(
-                  children: <Widget> [
-                    Container(height: 30),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          createCard(193, 22, 28, "ACCOUNT"),
-                          Container(width: 40),
-                          createCard(57, 97, 144, "STATISTICHE"),
-                        ]
-                    ),
-                    Container(height: 30),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          createCard(193, 22, 28, ""),
-                          Container(width: 40),
-                          createCard(57, 97, 144, "GIOCATORI"),
-                        ]
-                    ),
-                    Container(height: 30),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          createCard(57, 97, 144, "PRIVACY"),
-                          Container(width: 40),
-                          createCard(193, 22, 28, ""),
-                        ]
-                    ),
-                    Container(height: 30),
-                  ]
-                )
-              )]
-            )
+              Expanded(child: Card(
+                  color: const Color.fromARGB(255, 224, 224, 224),
+                  child: Column(
+                      children: <Widget> [
+                        Container(height: 30),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              createCard(193, 22, 28, "ACCOUNT"),
+                              Container(width: 20),
+                              createCard(57, 97, 144, "STATISTICHE"),
+                            ]
+                        ),
+                        Container(height: 20),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              createCard(193, 22, 28, ""),
+                              Container(width: 20),
+                              createCard(57, 97, 144, "GIOCATORI"),
+                            ]
+                        ),
+                        Container(height: 20),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              createCard(57, 97, 144, "PRIVACY"),
+                              Container(width: 20),
+                              createCard(193, 22, 28, ""),
+                            ]
+                        ),
+                        Container(height: 25),
+                        exitButton,
+                        Container(height: 10),
+                        deleteButton,
+                      ]
+                  )
+              ))
+            ])
         )
     );
   }
