@@ -10,10 +10,15 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
           DrawerHeader(
+            // TODO remove grey divider
             child: Image.asset(
               'assets/images/logo.png',
               height: 60.0,
             ),
+          ),
+          const Divider(
+            color: Color.fromARGB(255, 62, 65, 102),
+            thickness: 1.5,
           ),
           ListTile(
             leading: const Icon(Icons.home,
@@ -57,7 +62,7 @@ class NavDrawer extends StatelessWidget {
                     color: const Color.fromARGB(255, 62, 65, 102)
                 )
             ),
-            onTap: () => {},
+            onTap: () => Navigator.pushNamed(context, '/news'),
           ),
           const Divider(
             color: Color.fromARGB(255, 62, 65, 102),
@@ -90,6 +95,22 @@ class NavDrawer extends StatelessWidget {
                 )
             ),
             onTap: () => {},
+          ),
+          const Divider(
+            color: Color.fromARGB(255, 62, 65, 102),
+            thickness: 1.5,
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout,
+                color: Color.fromARGB(255, 62, 65, 102)
+            ),
+            title: Text(
+                'LOGOUT',
+                style: style.copyWith(
+                    color: const Color.fromARGB(255, 62, 65, 102)
+                )
+            ),
+            onTap: () => Navigator.pushNamed(context, '/'),
           ),
           const Divider(
             color: Color.fromARGB(255, 62, 65, 102),

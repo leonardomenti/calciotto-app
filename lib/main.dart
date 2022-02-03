@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:calciotto/views/all.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/signin': (context) => Signin(),
         '/home' : (context) => Home(),
         '/profile': (context) => Profile(),
+        '/news' : (context) => News(),
       },
     );
   }

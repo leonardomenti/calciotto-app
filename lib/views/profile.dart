@@ -4,10 +4,6 @@ import 'navdrawer.dart';
 class Profile extends StatelessWidget {
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 15.0);
-  final appBar = AppBar(
-    title: const Text(""),
-    backgroundColor: const Color.fromARGB(255, 1, 39, 77),
-  );
 
   Material createCard(int r, int g, int b, String text) =>
       Material(
