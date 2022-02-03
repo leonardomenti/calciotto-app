@@ -11,6 +11,9 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    double mWidth= MediaQuery.of(context).size.width;
+    double mHeight= MediaQuery.of(context).size.height;
+
     final usernameField = TextField(
       obscureText: false,
       style: style,
@@ -96,19 +99,19 @@ class Login extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: mHeight * 0.01,),
                 Text("CALCIOTTO",
                     textAlign: TextAlign.center,
                     style: style.copyWith(color: Colors.white)),
-                SizedBox(height: 35.0),
+                SizedBox(height: mHeight * 0.05,),
                 usernameField,
-                SizedBox(height: 15.0),
+                SizedBox(height: mHeight * 0.02,),
                 passwordField,
-                SizedBox(height: 10.0,),
+                SizedBox(height: mHeight * 0.01,),
                 resetPassword,
-                SizedBox(height: 40.0,),
+                SizedBox(height: mHeight * 0.1,),
                 loginButton,
-                SizedBox(height: 20.0,),
+                SizedBox(height: mHeight * 0.02,),
                 signinButton,
               ],
             ),
