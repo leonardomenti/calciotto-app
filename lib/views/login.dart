@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
 
-  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  final appBar = new AppBar(
-    title: new Text(""),
-    backgroundColor: Color.fromARGB(255, 21, 39, 77),
-  );
+  TextStyle body_style = TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
+  TextStyle title_style = TextStyle(fontFamily: 'Aspire', fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +13,7 @@ class Login extends StatelessWidget {
 
     final usernameField = TextField(
       obscureText: false,
-      style: style,
+      style: body_style,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -29,7 +26,7 @@ class Login extends StatelessWidget {
 
     final passwordField = TextField(
       obscureText: true,
-      style: style,
+      style: body_style,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -43,33 +40,30 @@ class Login extends StatelessWidget {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(10.0),
-      color: Color.fromARGB(255, 193, 22, 28),
+      color: Colors.white,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () => Navigator.pushNamed(context, '/home'),
-        child: Text("Accedi",
+        onPressed: () => Navigator.pushNamed(context, '/testapi'),
+        child: Text("ACCEDI",
             textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
+            style: title_style.copyWith(
+                color: Color.fromARGB(255, 100, 101, 103),
+                fontWeight: FontWeight.bold)),
       ),
     );
 
     final signinButton = Material(
       elevation: 5.0,
-      color: Color.fromARGB(255, 57, 97, 144),
+      color: Color.fromARGB(255, 193, 22, 28),
       borderRadius: BorderRadius.circular(10.0),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () => Navigator.pushNamed(context, '/signin'),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius. circular(10.0),
-            side: BorderSide(color: Colors. white)
-        ),
-        child: Text("Registrati",
+        child: Text("REGISTRATI",
             textAlign: TextAlign.center,
-            style: style.copyWith(
+            style: title_style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
@@ -77,7 +71,7 @@ class Login extends StatelessWidget {
     final resetPassword = Text(
       'Hai dimenticato la password?',
       textAlign: TextAlign.center,
-      style: style.copyWith(
+      style: body_style.copyWith(
           color: Colors.white30, fontSize: 15),
     );
 
@@ -85,7 +79,7 @@ class Login extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
-          color: Color.fromARGB(255, 57, 97, 144),
+          color: Color.fromARGB(255, 100, 101, 103),
           child: Padding (
             padding: const EdgeInsets.only(left: 35.0, right: 35.0),
             child: Column(
@@ -93,7 +87,7 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 100.0,
+                  height: 150.0,
                   child: Image.asset(
                     "assets/images/logo.png",
                     fit: BoxFit.contain,
@@ -102,7 +96,7 @@ class Login extends StatelessWidget {
                 SizedBox(height: mHeight * 0.01,),
                 Text("CALCIOTTO",
                     textAlign: TextAlign.center,
-                    style: style.copyWith(color: Colors.white)),
+                    style: title_style.copyWith(color: Colors.white)),
                 SizedBox(height: mHeight * 0.05,),
                 usernameField,
                 SizedBox(height: mHeight * 0.02,),
@@ -118,7 +112,6 @@ class Login extends StatelessWidget {
           )
         ),
       ),
-      bottomNavigationBar: SizedBox(height: 50, child: appBar),
     );
   }
 }
