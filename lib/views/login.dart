@@ -1,41 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:calciotto/util/utils.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
 
-  TextStyle body_style = TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
-  TextStyle title_style = TextStyle(fontFamily: 'Aspire', fontSize: 20.0);
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() {
+    return LoginState();
+  }
+}
+
+class LoginState extends State<Login>{
+
+  final _formKey = GlobalKey<FormState>();
+
+  TextStyle bodyStyle = const TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
+  TextStyle titleStyle = const TextStyle(fontFamily: 'Aspire', fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
 
+    final usernameField = Utils.createTextField('Username', false);
+    final passwordField = Utils.createTextField('Password', true);
+
     double mWidth= MediaQuery.of(context).size.width;
     double mHeight= MediaQuery.of(context).size.height;
-
-    final usernameField = TextField(
-      obscureText: false,
-      style: body_style,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Username",
-          fillColor: Colors.white,
-          filled: true,
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
-    );
-
-    final passwordField = TextField(
-      obscureText: true,
-      style: body_style,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          fillColor: Colors.white,
-          filled: true,
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
-    );
 
     final loginButton = Material(
       elevation: 5.0,
@@ -44,10 +34,13 @@ class Login extends StatelessWidget {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () => Navigator.pushNamed(context, '/testapi'),
+        onPressed: () => {
+          if (_formKey.currentState!.validate())
+            Navigator.pushNamed(context, '/testapi')
+        },
         child: Text("ACCEDI",
             textAlign: TextAlign.center,
-            style: title_style.copyWith(
+            style: titleStyle.copyWith(
                 color: Color.fromARGB(255, 100, 101, 103),
                 fontWeight: FontWeight.bold)),
       ),
@@ -63,7 +56,7 @@ class Login extends StatelessWidget {
         onPressed: () => Navigator.pushNamed(context, '/signin'),
         child: Text("REGISTRATI",
             textAlign: TextAlign.center,
-            style: title_style.copyWith(
+            style: titleStyle.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
@@ -71,7 +64,7 @@ class Login extends StatelessWidget {
     final resetPassword = Text(
       'Hai dimenticato la password?',
       textAlign: TextAlign.center,
-      style: body_style.copyWith(
+      style: bodyStyle.copyWith(
           color: Colors.white30, fontSize: 15),
     );
 
@@ -96,11 +89,21 @@ class Login extends StatelessWidget {
                 SizedBox(height: mHeight * 0.01,),
                 Text("CALCIOTTO",
                     textAlign: TextAlign.center,
-                    style: title_style.copyWith(color: Colors.white)),
+                    style: titleStyle.copyWith(
+                        color: Colors.white,
+                        fontSize: 30.0
+                    )),
                 SizedBox(height: mHeight * 0.05,),
-                usernameField,
-                SizedBox(height: mHeight * 0.02,),
-                passwordField,
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      usernameField,
+                      SizedBox(height: mHeight * 0.02,),
+                      passwordField,
+                    ],
+                  )
+                ),
                 SizedBox(height: mHeight * 0.01,),
                 resetPassword,
                 SizedBox(height: mHeight * 0.1,),
