@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
         '/home' : (context) => Home(),
         '/profile': (context) => Profile(),
         '/news' : (context) => News(),
+        '/testapi' : (context) => Testapi(),
+        '/args' : (context) => Args(),
       },
     );
   }
