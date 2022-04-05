@@ -1,3 +1,4 @@
+import 'package:calciotto/controllers/LoginController.dart';
 import 'package:flutter/material.dart';
 import 'package:calciotto/util/utils.dart';
 
@@ -18,6 +19,8 @@ class LoginState extends State<Login>{
   TextStyle bodyStyle = const TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
   TextStyle titleStyle = const TextStyle(fontFamily: 'Aspire', fontSize: 20.0);
 
+  var res;
+
   @override
   Widget build(BuildContext context) {
 
@@ -34,9 +37,14 @@ class LoginState extends State<Login>{
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () => {
-          if (_formKey.currentState!.validate())
-            Navigator.pushNamed(context, '/home')
+        onPressed: () async => {
+          if (_formKey.currentState!.validate()){
+            res = await LoginController.login_user(
+                usernameField.controller!.text,
+                passwordField.controller!.text),
+            if (res == 200)
+              Navigator.pushNamed(context, '/home')
+          }
         },
         child: Text("ACCEDI",
             textAlign: TextAlign.center,
