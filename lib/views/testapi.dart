@@ -11,7 +11,7 @@ class Testapi extends StatefulWidget{
 
 class _Testapi extends State<Testapi> {
 
-  String host_address = '15.161.98.13';
+  String host_address = '15.161.230.197';
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
