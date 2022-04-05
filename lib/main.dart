@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:calciotto/views/all.dart';
 
 void main() {
@@ -23,8 +22,9 @@ class MyApp extends StatelessWidget {
         '/home' : (context) => Home(),
         '/profile': (context) => Profile(),
         '/news' : (context) => News(),
+        '/news_page' : (context) => NewsPage(),
         '/testapi' : (context) => Testapi(),
-        '/args' : (context) => Args(),
+        '/personal_data': (context) => PersonalData()
       },
     );
   }

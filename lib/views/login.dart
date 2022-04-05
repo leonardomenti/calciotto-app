@@ -36,7 +36,7 @@ class LoginState extends State<Login>{
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () => {
           if (_formKey.currentState!.validate())
-            Navigator.pushNamed(context, '/testapi')
+            Navigator.pushNamed(context, '/home')
         },
         child: Text("ACCEDI",
             textAlign: TextAlign.center,

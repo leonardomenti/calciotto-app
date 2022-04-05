@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calciotto/util/utils.dart';
+import 'package:calciotto/controllers/RegistrationController.dart';
 
 class Signin extends StatefulWidget {
 
@@ -22,17 +23,6 @@ class SigninState extends State<Signin>{
     title: const Text(""),
     backgroundColor: const Color.fromARGB(255, 21, 39, 77),
   );
-  /*
-  String? fieldValidation(String value, String valueName, RegExp regex){
-    if (value == null || value.isEmpty){
-      return 'Please insert the ' + valueName;
-    }
-    if (!regex.hasMatch(value)){ 
-        return 'Please enter a valid email';
-    }
-    return null;
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +43,11 @@ class SigninState extends State<Signin>{
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Processing Data'))
             ),
-          Navigator.pushNamed(
-            context,
-            '/args',
-            arguments: {
-              'username' : usernameField.controller!.text,
-              'password' : passwordField.controller!.text,
-              'email' : emailField.controller!.text
-            })
-          }
+          RegistrationController.registerNewUser(
+            usernameField.controller!.text,
+            passwordField.controller!.text,
+            emailField.controller!.text
+          )}
         },
         child: Text("Registrati",
             textAlign: TextAlign.center,

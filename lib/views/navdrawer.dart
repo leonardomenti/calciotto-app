@@ -1,123 +1,77 @@
 import 'package:flutter/material.dart';
 
 class NavDrawer extends StatelessWidget {
-  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  TextStyle style = TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
+
+  Divider divider = const Divider(
+    color: Colors.white,
+    thickness: 1.0,
+    height: 1.0,
+  );
 
   @override
   Widget build(BuildContext context) {
+
+    Container createNavEntry(IconData icon, String text, String path) => Container(
+      color: Color.fromARGB(255, 90, 90, 90),
+      child: ListTile(
+          leading: Icon(icon , color: Colors.white),
+          title: Text(
+              text,
+              style: style.copyWith(color: Colors.white)
+          ),
+          onTap: () => Navigator.pushNamed(context, path)
+      )
+    );
+
+    Container createNavLink(String text, String path) => Container(
+        color: Color.fromARGB(255, 90, 90, 90),
+        child: ListTile(
+            title: Text(
+                text,
+                style: style.copyWith(
+                    fontSize: 15.0,
+                    color: Colors.white)
+            ),
+            onTap: () => Navigator.pushNamed(context, path)
+        )
+    );
+
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.all(10.0),
+        child: ListView(
+        padding: EdgeInsets.only(top: 0),
         children: <Widget>[
-          DrawerHeader(
-            // TODO remove grey divider
-            child: Image.asset(
-              'assets/images/logo.png',
-              height: 60.0,
-            ),
+          Container(
+            color: Color.fromARGB(255, 90, 90, 90),
+            child: DrawerHeader(
+              // TODO remove grey divider
+                child: Row(children: [
+                  Column(children: [Text("Matteo Garrilli")]),
+                  Column(children: [
+                    Image.asset('assets/images/logo.png', height: 60.0)])
+                ])
+            )
           ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.home,
-                color: Color.fromARGB(255, 62, 65, 102)
-                ),
-            title: Text(
-                'HOME',
-                style: style.copyWith(
-                  color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => Navigator.pushNamed(context, '/home'),
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.account_circle,
-                color: Color.fromARGB(255, 62, 65, 102)
-            ),
-            title: Text(
-                'PROFILO',
-                style: style.copyWith(
-                    color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => Navigator.pushNamed(context, '/profile'),
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.local_post_office,
-                color: Color.fromARGB(255, 62, 65, 102)
-            ),
-            title: Text(
-                'COMUNICAZIONI',
-                style: style.copyWith(
-                    color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => Navigator.pushNamed(context, '/news'),
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.moving,
-                color: Color.fromARGB(255, 62, 65, 102)
-            ),
-            title: Text(
-                'STATISTICHE',
-                style: style.copyWith(
-                    color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => {},
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.sports_soccer,
-                color: Color.fromARGB(255, 62, 65, 102)
-            ),
-            title: Text(
-                'CLASSIFICA',
-                style: style.copyWith(
-                    color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => {},
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-          ListTile(
-            leading: const Icon(Icons.logout,
-                color: Color.fromARGB(255, 62, 65, 102)
-            ),
-            title: Text(
-                'LOGOUT',
-                style: style.copyWith(
-                    color: const Color.fromARGB(255, 62, 65, 102)
-                )
-            ),
-            onTap: () => Navigator.pushNamed(context, '/'),
-          ),
-          const Divider(
-            color: Color.fromARGB(255, 62, 65, 102),
-            thickness: 1.5,
-          ),
-        ],
-      ),
+          createNavEntry(Icons.home, "Home", "/home"),
+          createNavEntry(Icons.account_circle, "Dati Personali", "/personal_data"),
+          createNavEntry(Icons.local_post_office, "Comunicazioni", "/news"),
+          createNavEntry(Icons.moving, "Statistiche", "/"),
+          createNavEntry(Icons.sports_soccer, "Classifica", "/"),
+          divider,
+          createNavEntry(Icons.account_circle, "Admin", "/"),
+          divider,
+          Expanded(
+              child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Column(
+                    children: <Widget>[
+                      createNavLink("Regolamento", "/"),
+                      createNavLink("Esci", "/"),
+                      createNavLink("Elimina Account", "/")
+                    ],
+                  ))),
+        ]
+      )
     );
   }
 }
