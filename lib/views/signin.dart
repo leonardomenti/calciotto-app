@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calciotto/util/utils.dart';
-import 'package:calciotto/controllers/RegistrationController.dart';
+import 'package:calciotto/controllers/registration_controller.dart';
 
 class Signin extends StatefulWidget {
 
@@ -28,8 +28,12 @@ class SigninState extends State<Signin>{
   Widget build(BuildContext context) {
 
     final usernameField = Utils.createTextField('Username', false);
+    final firstNameField = Utils.createTextField('Nome', false);
+    final lastNameField = Utils.createTextField('Cognome', false);
     final passwordField = Utils.createTextField('Password', true);
     final emailField = Utils.createTextField('Email', false);
+
+    var res;
 
     final signinButton = Material(
       elevation: 5.0,
@@ -40,14 +44,40 @@ class SigninState extends State<Signin>{
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () => {
           if (_formKey.currentState!.validate()){
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Processing Data'))
-            ),
-          RegistrationController.registerNewUser(
+          res = RegistrationController.register_user(
             usernameField.controller!.text,
+            firstNameField.controller!.text,
+            lastNameField.controller!.text,
             passwordField.controller!.text,
-            emailField.controller!.text
-          )}
+            emailField.controller!.text).then((res) => {
+              if (res == 200){
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Utente creato con successo!'),
+                      backgroundColor: Colors.green,
+                    )
+                ),
+                Navigator.pushNamed(context, '/')
+              }
+              else{
+                if (res == 401){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Username o Password già esistenti'),
+                        backgroundColor: Colors.red,
+                      )
+                  ),
+                }
+                else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Impossibile creare l\'utente'),
+                        backgroundColor: Colors.red,
+                      )
+                  ),
+                }
+              }
+          })}
         },
         child: Text("Registrati",
             textAlign: TextAlign.center,
@@ -99,15 +129,19 @@ class SigninState extends State<Signin>{
                     Text("CALCIOTTO",
                         textAlign: TextAlign.center,
                         style: titleStyle.copyWith(color: Colors.white)),
-                    SizedBox(height: 20.0),
-                    usernameField,
                     SizedBox(height: 10.0),
+                    usernameField,
+                    SizedBox(height: 5.0),
+                    firstNameField,
+                    SizedBox(height: 5.0),
+                    lastNameField,
+                    SizedBox(height: 5.0),
                     passwordField,
-                    SizedBox(height: 10.0,),
+                    SizedBox(height: 5.0,),
                     emailField,
-                    SizedBox(height: 40.0,),
+                    SizedBox(height: 20.0,),
                     signinButton,
-                    SizedBox(height: 55.0,),
+                    SizedBox(height: 20.0,),
                     backToLoginButton,
                   ],
                 ),

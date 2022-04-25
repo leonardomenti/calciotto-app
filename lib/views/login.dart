@@ -1,4 +1,4 @@
-import 'package:calciotto/controllers/LoginController.dart';
+import 'package:calciotto/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:calciotto/util/utils.dart';
 
@@ -39,11 +39,20 @@ class LoginState extends State<Login>{
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async => {
           if (_formKey.currentState!.validate()){
-            res = await LoginController.login_user(
+            res = LoginController.login_user(
                 usernameField.controller!.text,
-                passwordField.controller!.text),
-            if (res == 200)
-              Navigator.pushNamed(context, '/home')
+                passwordField.controller!.text).then((res) => {
+                  if (res == 200)
+                    Navigator.pushNamed(context, '/home')
+                  else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Credenziali errate'),
+                          backgroundColor: Colors.red,
+                        )
+                    ),
+                  }
+                }),
           }
         },
         child: Text("ACCEDI",
@@ -114,7 +123,7 @@ class LoginState extends State<Login>{
                 ),
                 SizedBox(height: mHeight * 0.01,),
                 resetPassword,
-                SizedBox(height: mHeight * 0.1,),
+                SizedBox(height: mHeight * 0.05,),
                 loginButton,
                 SizedBox(height: mHeight * 0.02,),
                 signinButton,
