@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
 
-String host_address = "15.160.88.22";
+String host_address = "18.102.9.43";
 
 Future<int> login(username, password) async{
   final response =  await http.post(
@@ -56,6 +56,6 @@ void main() async{
   });
   test ('Utente già esistente', () async {
     final response = await signup('test', 'test', 'test', 'test', 'test');
-    expect(response,404);
+    expect(response,401);
   });
 }

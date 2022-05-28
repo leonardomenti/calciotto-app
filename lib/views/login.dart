@@ -42,7 +42,9 @@ class LoginState extends State<Login>{
             res = LoginController.login_user(
                 usernameField.controller!.text,
                 passwordField.controller!.text).then((res) => {
-                  if (res == 200)
+                  if (res == "Admin")
+                    Navigator.pushNamed(context, '/admin')
+                  else if (res=="Public")
                     Navigator.pushNamed(context, '/home')
                   else{
                     ScaffoldMessenger.of(context).showSnackBar(

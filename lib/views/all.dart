@@ -6,3 +6,4 @@ export 'news.dart';
 export 'news_page.dart';
 export 'testapi.dart';
 export 'personal_data.dart';
+export 'admin.dart';

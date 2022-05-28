@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => Login(),
+        '/admin': (context) => Admin(),
         '/signin': (context) => Signin(),
         '/home' : (context) => Home(),
         '/profile': (context) => Profile(),
         '/news' : (context) => News(),
         '/news_page' : (context) => NewsPage(),
-        '/testapi' : (context) => Testapi(),
         '/personal_data': (context) => PersonalData()
       },
     );

@@ -48,8 +48,9 @@ class SigninState extends State<Signin>{
             usernameField.controller!.text,
             firstNameField.controller!.text,
             lastNameField.controller!.text,
-            passwordField.controller!.text,
-            emailField.controller!.text).then((res) => {
+            emailField.controller!.text,
+            passwordField.controller!.text
+            ).then((res) => {
               if (res == 200){
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

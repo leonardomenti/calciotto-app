@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:calciotto/services/secure_storeage.dart';
 class NavDrawer extends StatelessWidget {
   TextStyle style = TextStyle(fontFamily: 'Gujarati', fontSize: 20.0);
+  StorageService storageService = StorageService();
 
   Divider divider = const Divider(
     color: Colors.white,
@@ -44,14 +45,24 @@ class NavDrawer extends StatelessWidget {
           Container(
             color: Color.fromARGB(255, 90, 90, 90),
             child: DrawerHeader(
-              // TODO remove grey divider
                 child: Row(children: [
-                  Column(children: [Text("Matteo Garrilli")]),
+                  Column(children : [
+                     FutureBuilder(
+                       future: storageService.readSecureData('username'),
+                       builder: (context, snapshot) {
+                         if (snapshot.hasData) {
+                           return Text(snapshot.data as String, style: TextStyle(fontSize: 25));
+                         } else {
+                           return Text('Loading...');
+                         }
+                       }
+                     )
+                   ]),
+                  SizedBox(width: 80),
                   Column(children: [
-                    Image.asset('assets/images/logo.png', height: 60.0)])
-                ])
-            )
-          ),
+                    Image.asset('assets/images/logo.png', height: 80.0)])
+                ]),
+            )),
           createNavEntry(Icons.home, "Home", "/home"),
           createNavEntry(Icons.account_circle, "Dati Personali", "/personal_data"),
           createNavEntry(Icons.local_post_office, "Comunicazioni", "/news"),
