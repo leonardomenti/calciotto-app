@@ -46,7 +46,7 @@ class Admin extends StatelessWidget {
               backgroundColor: Color.fromARGB(255, 100, 101, 103),
               elevation: 0,
               title: Text(
-                "1 Giornata",
+                "CALCIOTTO BETA VERSION",
                 style: style,
               ),
               actions: <Widget>[

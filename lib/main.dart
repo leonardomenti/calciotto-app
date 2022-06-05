@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => Profile(),
         '/news' : (context) => News(),
         '/news_page' : (context) => NewsPage(),
-        '/personal_data': (context) => PersonalData()
+        '/personal_data': (context) => PersonalData(),
+        '/new_match': (context) => NewMatch(),
+        '/new_team': (context) => NewTeam()
       },
     );
   }

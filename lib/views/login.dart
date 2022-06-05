@@ -44,7 +44,7 @@ class LoginState extends State<Login>{
                 passwordField.controller!.text).then((res) => {
                   if (res == "Admin")
                     Navigator.pushNamed(context, '/admin')
-                  else if (res=="Public")
+                  else if (res == "Public")
                     Navigator.pushNamed(context, '/home')
                   else{
                     ScaffoldMessenger.of(context).showSnackBar(

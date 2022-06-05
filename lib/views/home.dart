@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
 
     TextField createROTextField(String text) => TextField (
       readOnly: true,
-      style: TextStyle(fontFamily: 'Gujarati', fontSize: 20.0, height: 2.5),
+      style: TextStyle(fontFamily: 'Gujarati', fontSize: 18.0, height: 2.5),
       textAlign: TextAlign.center,
       decoration: InputDecoration(
           hintText: text,
